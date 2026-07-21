@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   BASE STYLES — DISCIPLINEOS
+   ============================================ */
+
+@layer base {
+  /* Dark Mode (Default) */
+  :root {
+    --bg-primary: #0D1117;
+    --bg-surface: #161B22;
+    --text-primary: #FFFFFF;
+    --text-secondary: #8B949E;
+    --text-muted: #484F58;
+    --border-default: #21262D;
+    --border-subtle: #30363D;
+  }
+
+  html {
+    @apply bg-bg text-text-primary antialiased;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+
+  body {
+    @apply bg-bg m-0 min-h-screen;
+  }
+
+  /* Custom Scrollbar (Dark) */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-bg-surface;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border-DEFAULT rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-border-subtle;
+  }
+
+  /* Selection */
+  ::selection {
+    @apply bg-discipline-blue/30 text-text-primary;
+  }
+
+  /* Focus Ring Override */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-discipline-blue ring-offset-2 ring-offset-bg-surface;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-bg-surface/80 backdrop-blur-sm border border-border-subtle/50;
+  }
+
+  .card-hover {
+    @apply transition-all duration-200 hover:border-border-subtle hover:shadow-lg;
+  }
+
+  .bottom-nav {
+    @apply fixed bottom-0 left-0 right-0 bg-bg-surface border-t border-border-DEFAULT flex justify-around items-center py-2 px-4 z-40;
+  }
+
+  /* Mobile safe area for bottom nav */
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* Hide scrollbar for heatmap */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+    }
